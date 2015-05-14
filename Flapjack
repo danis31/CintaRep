@@ -1,0 +1,40 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Flapjack {
+    
+    public static void main(String[] args) throws FileNotFoundException {
+    
+    zflapjack pancake = new zflapjack();  //memanggil kelas zflapjack
+    
+    String lokasi = "E:\\ASD\flapjack.txt"; //inisialisasi lokasi file.txt
+    
+        File f = new File(lokasi);  //memasukkan lokasi file.txt
+        Scanner z = new Scanner(f); //membaca isi file.txt
+        
+        while(z.hasNextLine()){
+            int[] IndeksFlip;
+            
+            String IndeksFlipFinal = "";
+            String InputPancake = z.nextLine();
+            String[] temp = InputPancake.split(" ");
+            
+            int[] stack = new int[temp.length];
+            
+            for(int i = 0; i < temp.length; i++){
+                stack[i] = Integer.parseInt(temp[i]);
+            }
+            
+            IndeksFlip = pancake.ProsesPengurutan(stack);
+            
+            System.out.println("Input : " + InputPancake);
+                for(int i = 0; IndeksFlip[i] != 0 && i < IndeksFlip.length; i++){
+                    IndeksFlipFinal = IndeksFlipFinal + IndeksFlip[i] + " ";
+                }
+            IndeksFlipFinal = IndeksFlipFinal + 0;
+            
+            System.out.println("Ouput : " + IndeksFlipFinal);
+        }
+    }
+}
